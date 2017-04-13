@@ -82,9 +82,12 @@ var biggestProd = function(a) {
   return Math.max(pos, neg)
 }
 
+
 var b = [10,20,30,4,5,7,5,3,-11,-22,-30]
 
 //396000
+
+
 
 console.log(biggestProd(b))
 
