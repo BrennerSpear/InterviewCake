@@ -56,7 +56,7 @@ var makeChange = function(amount, coins) {
     var coin = coins[c]
     for(var i=1; i <= amount; i++) {
       var amountLeft = i - coin
-      memo[i] = amountLeft >= 0 ? memo[i] + memo[amountLeft] : memo[i] || 0
+      memo[i] = amountLeft >= 0 ? memo[i] + memo[amountLeft] || memo[amountLeft] : memo[i] || 0
     }
   }
   console.log(memo)
