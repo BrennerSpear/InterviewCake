@@ -44,6 +44,18 @@ var isBalanced = function(node, min, max) {
   return (leftBalanced && rightBalanced)
 }
 
+var isBalanced = function(node, min = Number.NEGATIVE_INFINITY, max = Number.POSITIVE_INFINITY) {
+  if(!node) {
+    return true
+  }
+  else if (min >= node.value || max <= node.value) {
+    return false
+  }
+  else {
+    return (isBalanced(node.left, min, node.value) && isBalanced(node.right, node.value, max))
+  }
+}
+
 var node = new BinaryTreeNode(10)
 node.insertRight(14)
 node.right.insertRight(16)
