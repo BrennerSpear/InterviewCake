@@ -23,10 +23,8 @@ var includes = function(target, arr) {
   return false
 }
 
-
-
 var a = [1,2,3,4,5,6,8,9,10]
-var b = [1,2,3,4,5,6,7,8,9,10]
+var b = [0,1,2,3,4,5,6,7,8,9,10,12]
 b.forEach(elm => {
   console.log(includes(elm, a))
 })
