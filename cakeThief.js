@@ -20,8 +20,10 @@ const maxDuffelBagValue = function (cakeTypes, capacity) {
   if(capacity < 1) return 0
 
   var maxValueAtCapacity = []
+  var allTheCakes = []
   for(var i=0; i<= capacity; i++) {
     maxValueAtCapacity[i] = 0
+    allTheCakes[i] = []
   }
 
   for(var currentCapacity = 1; currentCapacity <= capacity; currentCapacity++) {
@@ -29,11 +31,18 @@ const maxDuffelBagValue = function (cakeTypes, capacity) {
       if(currentCapacity >= cake.weight) {
         var capacityLeft = currentCapacity - cake.weight
         var possibleValue = cake.value + maxValueAtCapacity[capacityLeft]
-        maxValueAtCapacity[currentCapacity] = Math.max(maxValueAtCapacity[currentCapacity], possibleValue)
+        if(possibleValue > maxValueAtCapacity[currentCapacity]) {
+          maxValueAtCapacity[currentCapacity] = possibleValue
+          allTheCakes[currentCapacity] = [cake].concat(allTheCakes[capacityLeft])
+          
+        }
       }  
     })
   }
-  console.log(maxValueAtCapacity)
+  for(var i=0; i < maxValueAtCapacity.length; i++) {
+    console.log('capacity:', i, ':', allTheCakes[i], '(total value', maxValueAtCapacity[i], ')')
+    // console.log(allTheCakes[i])
+  }
   return maxValueAtCapacity[capacity]
 
 }
