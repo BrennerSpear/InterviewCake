@@ -5,7 +5,7 @@ function LinkedListNode(value) {
 
 
 function reverseList(head) {
-  if(!head.next) {return head}
+  if(!head || !head.next) {return head}
   var prev = null
   var current = head
   var next = current.next
